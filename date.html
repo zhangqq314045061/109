@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date</title>
+</head>
+<style type="text/css"> 
+* { 
+  margin:0px; 
+  padding:0px; 
+  outline:none; 
+} 
+body { 
+    background-color:#0E0E0E; 
+  overflow:hidden; 
+} 
+.date { 
+  width:860px; 
+  height:250px; 
+  border:1px solid #FFFFFF; 
+  margin:auto; 
+  margin-top:200px; 
+  color:#FFFFFF; 
+}
+#time1 { 
+     width:860px; 
+   height:100px; 
+   margin:auto; 
+   font-size:75px; 
+   text-align:center; 
+}
+#time2 { 
+     font-size:125px; 
+   text-align:center; 
+} 
+</style>
+<body>
+<div class="date"> 
+   <!--显示当前年月日--> 
+   <div id="time1"></div> 
+  <!--显示当前北京时间--> 
+   <div id="time2"></div> 
+</div>
+<script>
+    // var date=new Date();
+    // var year=date.getFullYear();
+    // var month=date.getMonth()+1;
+    // var day=date.getDay();
+    // var ndate=date.getDate();
+    // var hour=date.getHours();
+    // var minute=date.getMinutes();
+    // var second=date.getSeconds()
+    // var millisecond=date.getMilliseconds()
+    // // +':'+day
+    // console.log(year+'年:'+month+'月:'+ndate+'日:'+hour+'时:'+minute+':'+second+':'+millisecond)
+   function startTime()//显示日期的函数 
+  { 
+    var today=new Date();//创建日期时间对象 
+    var n=today.getFullYear();//获取当前时间的年份 
+    var m=today.getMonth();//获取当前时间的月份 
+    var d=today.getDate();//获取当前时间的日期 
+    var dat=today.getDay();//获取当前时间的日期 
+      var h=today.getHours();//获取当前时间的小时 
+    var f=today.getMinutes();//获取当前时间的分钟 
+    var s=today.getSeconds();//获取当前时间的秒钟 
+    var weekday=new Array(7);//创建星期数组 
+    weekday[0]="星期日"; 
+    weekday[1]="星期一"; 
+    weekday[2]="星期二"; 
+    weekday[3]="星期三"; 
+    weekday[4]="星期四"; 
+    weekday[5]="星期五"; 
+    weekday[6]="星期六"; 
+    document.getElementById('time1').innerHTML=weekday[dat]+" "+n+"-"+(m+1)+"-"+checkTime(d); 
+      f=checkTime(f); 
+      s=checkTime(s); 
+      document.getElementById('time2').innerHTML=h+":"+f+":"+s; 
+      t=setTimeout('startTime()',1000); 
+  } 
+  function checkTime(i)//日期校验函数 
+  { 
+    if (i<10)  
+   { 
+     return i="0" + i; 
+    } 
+    else 
+    { 
+     return i; 
+    } 
+  } 
+  startTime();
+</script>
+    
+</body>
+</html>
